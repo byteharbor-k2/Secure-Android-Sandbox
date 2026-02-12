@@ -1,0 +1,81 @@
+# ============================================
+# Secure Android Sandbox - Git Ignore Rules
+# ============================================
+
+# 敏感信息保护
+# ============================================
+# ADB设备信息备份
+*device_info*.txt
+*imei*.txt
+*android_id*.txt
+backup_packages.txt
+
+# 网络抓包文件
+*.pcap
+*.pcapng
+*.cap
+
+# 密钥和证书
+*.key
+*.pem
+*.jks
+*.keystore
+*.p12
+
+# 配置文件中可能包含IP/凭证
+config.local.*
+secrets.*
+.env
+.env.local
+
+# APK文件 (通常较大且可能包含特定版本信息)
+# ============================================
+*.apk
+*.xapk
+*.apks
+
+# Frida相关
+# ============================================
+frida-server*
+*_agent.so
+
+# Python相关
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# 临时文件
+# ============================================
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# IDE相关
+# ============================================
+.vscode/
+.idea/
+*.sublime-*
+
+# 脚本输出
+# ============================================
+output/
+dumps/
+screenshots/
+extracted/
+
+# 备份文件
+# ============================================
+*.bak
+*.backup
+*.old
