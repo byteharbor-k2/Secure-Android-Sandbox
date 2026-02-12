@@ -23,8 +23,11 @@
 ```
 主系统 → 设置 → 系统设置 → 开发者选项 →
   ├─ USB调试 (开启)
-  └─ 无线调试 (开启，可选)
+  ├─ 无线调试 (开启，可选)
+  └─ Disable adb authorization timeout (开启，防止WiFi调试频繁断连)
 ```
+
+![开发者选项 - WiFi调试配置](../../image/developer-options-wifi-debug.jpg)
 
 ### 3. 切换到系统分身并通过ADB操作
 

@@ -45,6 +45,22 @@ adb shell pm disable-user com.coloros.safesdkproxy
 
 ---
 
+### [debloat-main-system.md](./debloat-main-system.md)
+**主系统 Debloat 记录**
+
+在主系统（User 0）中禁用/挂起高隐私风险的OPPO系统组件：
+
+| 类别 | 已处理包数 | 方法 |
+|------|-----------|------|
+| AI功能 | 4个 | `disable-user` / `suspend` |
+| 语音助手 | 2个 | `disable-user` |
+| OPPO浏览器 | 1个 | `suspend` |
+| 广告SDK | 1个 | `suspend` |
+
+**发现**：ColorOS存在三层保护机制（`disable`拦截 → `uninstall`拦截 → `pm clear`拦截），`pm suspend` 可绕过前两层。
+
+---
+
 ### [install-third-party-apps.md](./install-third-party-apps.md)
 **第三方应用安装指南**
 
@@ -196,7 +212,7 @@ adb install -r app.apk
 ```
 1. 使用"匿名账户"登录
 2. 或使用Gboard输入Google账户
-3. 避免使用系统自带输入法（可能被监控）
+3. 避免使用系统自带输入法（一定被监控）
 ```
 
 ### Q4: 某些应用在系统分身中无法运行

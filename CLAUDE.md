@@ -94,7 +94,6 @@ adb shell pm uninstall --user 0 com.heytap.market
 ⚠️ **禁止操作**:
 - 不要卸载 `com.android.*` 开头的AOSP核心组件
 - 不要卸载 `com.google.*` GMS核心服务
-- 不要在主系统执行debloat操作
 
 ### C. 流量接管 (Traffic Control)
 
