@@ -83,12 +83,12 @@
 
 | 包名 | 风险 | 当前状态 |
 |------|------|----------|
-| `com.oplus.statistics.rom` | 遥测上报 | 待处理 |
-| `com.oplus.safecenter` | 安全中心（含反诈代理） | 待处理 |
-| `com.oplus.athena` | 应用安装扫描器 | 待处理 |
+| `com.oplus.statistics.rom` | 遥测上报 | **已禁用** |
+| `com.oplus.safecenter` | 安全中心（含反诈代理） | ⚠️ **无法处理**（三重保护） |
+| `com.oplus.athena` | 应用安装扫描器 | **已禁用** |
 | `com.sohu.inputmethod.sogouoem` | 搜狗输入法（云端上传） | **已卸载** (替换为 Gboard) |
 | `com.heytap.browser` | OPPO浏览器 | **已挂起** |
-| `com.heytap.cloud` | OPPO云服务 | 待处理 |
+| `com.heytap.cloud` | OPPO云服务 | **已禁用** |
 | `com.oplus.deepthinker` | AI行为分析 | **已禁用** |
 | `com.oplus.obrain` | AI大脑引擎 | **已禁用** |
 | `com.oplus.aiunit` | AI单元 | **已挂起** |

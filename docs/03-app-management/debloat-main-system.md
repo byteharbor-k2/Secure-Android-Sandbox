@@ -2,9 +2,9 @@
 
 ## 概述
 
-在主系统（User 0）中禁用/挂起高隐私风险的OPPO系统应用，包括AI功能、浏览器和广告SDK。
+在主系统（User 0）中禁用/挂起高隐私风险的OPPO系统应用，包括AI功能、浏览器、广告SDK、遥测、云服务和安装扫描器。
 
-**执行日期**: 2026-02-12
+**执行日期**: 2026-02-12 ~ 2026-02-13
 **设备**: OPPO Reno9 5G / ColorOS 15
 **连接方式**: WiFi调试（ADB over WiFi）
 
@@ -56,8 +56,12 @@ adb shell am get-current-user  # 输出0=主系统, 10=系统分身
 | 语音 | `com.yuemeng.speechsuite` | 语音套件 |
 | 浏览器 | `com.heytap.browser` | OPPO浏览器 |
 | 广告 | `com.opos.ads` | OPPO广告SDK |
+| 遥测 | `com.oplus.statistics.rom` | OPPO遥测上报 |
+| 云服务 | `com.heytap.cloud` | OPPO云服务 |
+| 扫描器 | `com.oplus.athena` | 应用安装扫描器 |
+| 安全中心 | `com.oplus.safecenter` | 安全中心（含反诈代理） |
 
-### 执行结果
+### 第一批执行结果 (2026-02-12)
 
 #### 成功禁用（disabled-user）
 
@@ -81,18 +85,50 @@ adb shell pm suspend --user 0 com.oplus.aiunit      # ✅ suspended
 adb shell pm suspend --user 0 com.opos.ads           # ✅ suspended
 ```
 
-### 最终状态汇总
+### 第二批执行结果 (2026-02-13)
 
-| 包名 | disable-user | uninstall | pm clear | suspend | 最终状态 |
-|------|:---:|:---:|:---:|:---:|------|
-| `com.oplus.deepthinker` | ✅ | - | - | - | **已禁用** |
-| `com.oplus.obrain` | ✅ | - | - | - | **已禁用** |
-| `com.aiunit.aon` | ✅ | - | - | - | **已禁用** |
-| `com.heytap.speechassist` | ✅ | - | - | - | **已禁用** |
-| `com.yuemeng.speechsuite` | ✅ | - | - | - | **已禁用** |
-| `com.heytap.browser` | ❌ default | ❌ 拦截 | ❌ 拦截 | ✅ | **已挂起** |
-| `com.oplus.aiunit` | ❌ default | ❌ 拦截 | ❌ 拦截 | ✅ | **已挂起** |
-| `com.opos.ads` | ❌ default | ❌ 拦截 | ❌ 拦截 | ✅ | **已挂起** |
+#### 成功禁用（disabled-user）
+
+```bash
+adb shell pm disable-user --user 0 com.oplus.statistics.rom  # ✅ disabled-user
+adb shell pm disable-user --user 0 com.oplus.athena          # ✅ disabled-user
+adb shell pm disable-user --user 0 com.heytap.cloud          # ✅ disabled-user
+```
+
+#### 系统最高保护包 — 无法处理
+
+`com.oplus.safecenter`（安全中心/反诈代理）具备 ColorOS 最高级别保护，三种非 root 方法均被拦截：
+
+```bash
+adb shell pm disable-user --user 0 com.oplus.safecenter  # ❌ 返回 default（拒绝）
+adb shell pm suspend --user 0 com.oplus.safecenter        # ❌ suspended state: false（拒绝）
+adb shell pm uninstall --user 0 com.oplus.safecenter      # ❌ DELETE_FAILED_INTERNAL_ERROR
+```
+
+#### 不存在的包
+
+```bash
+com.nearme.statistics.rom   # ColorOS 15 已合并到 com.oplus.statistics.rom
+com.coloros.safesdkproxy     # 本设备不存在
+```
+
+### 全部状态汇总
+
+| 包名 | disable-user | uninstall | suspend | 最终状态 |
+|------|:---:|:---:|:---:|------|
+| `com.oplus.deepthinker` | ✅ | - | - | **已禁用** |
+| `com.oplus.obrain` | ✅ | - | - | **已禁用** |
+| `com.aiunit.aon` | ✅ | - | - | **已禁用** |
+| `com.heytap.speechassist` | ✅ | - | - | **已禁用** |
+| `com.yuemeng.speechsuite` | ✅ | - | - | **已禁用** |
+| `com.oplus.statistics.rom` | ✅ | - | - | **已禁用** |
+| `com.oplus.athena` | ✅ | - | - | **已禁用** |
+| `com.heytap.cloud` | ✅ | - | - | **已禁用** |
+| `com.heytap.browser` | ❌ default | ❌ 拦截 | ✅ | **已挂起** |
+| `com.oplus.aiunit` | ❌ default | ❌ 拦截 | ✅ | **已挂起** |
+| `com.opos.ads` | ❌ default | ❌ 拦截 | ✅ | **已挂起** |
+| `com.sohu.inputmethod.sogouoem` | - | ✅ | - | **已卸载** |
+| `com.oplus.safecenter` | ❌ default | ❌ 拦截 | ❌ 拒绝 | ⚠️ **无法处理** |
 
 ---
 
@@ -110,14 +146,24 @@ java.lang.SecurityException: adb clearing user data is forbidden.
       .interceptClearUserDataIfNeeded(OplusClearDataProtectManager.java:123)
 ```
 
+### 保护等级分类
+
+根据实际测试，ColorOS 15 对系统应用有三个保护等级：
+
+| 等级 | 可用操作 | 示例包 |
+|------|---------|--------|
+| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud` |
+| **重要** | disable ❌, suspend ✅ | `com.heytap.browser`, `com.oplus.aiunit`, `com.opos.ads` |
+| **核心** | disable ❌, suspend ❌, uninstall ❌ | `com.oplus.safecenter`（仅 root 可处理） |
+
 ### 绕过策略
 
 | 方法 | 说明 | 适用场景 |
 |------|------|---------|
-| `pm disable-user` | 标准禁用，最温和 | 大部分系统应用 |
+| `pm disable-user` | 标准禁用，最温和 | 大部分系统应用（普通等级） |
 | `pm uninstall --user 0` | 从当前用户卸载 | 非核心保护包 |
-| `pm suspend` | 挂起应用，无法运行/接收广播 | 被前两种方法拦截的顽固包 |
-| Root + Magisk | 可彻底删除系统分区文件 | 需解锁Bootloader（本设备不可用） |
+| `pm suspend` | 挂起应用，无法运行/接收广播 | 重要等级的顽固包 |
+| Root + Magisk | 可彻底删除系统分区文件 | 核心等级包（本设备 Bootloader 锁定，不可用） |
 
 ---
 
@@ -132,11 +178,17 @@ adb shell pm enable --user 0 com.oplus.obrain
 adb shell pm enable --user 0 com.aiunit.aon
 adb shell pm enable --user 0 com.heytap.speechassist
 adb shell pm enable --user 0 com.yuemeng.speechsuite
+adb shell pm enable --user 0 com.oplus.statistics.rom
+adb shell pm enable --user 0 com.oplus.athena
+adb shell pm enable --user 0 com.heytap.cloud
 
 # 解除挂起的包
 adb shell pm unsuspend --user 0 com.heytap.browser
 adb shell pm unsuspend --user 0 com.oplus.aiunit
 adb shell pm unsuspend --user 0 com.opos.ads
+
+# 恢复已卸载的包（需恢复出厂或通过系统更新）
+# com.sohu.inputmethod.sogouoem — 已从 User 0 卸载，无法通过 ADB 恢复
 ```
 
 ---
@@ -196,11 +248,14 @@ adb shell pm unsuspend --user 0 com.opos.ads
 ## 待办事项
 
 - [ ] 在系统分身（User 10）中执行更全面的debloat
-- [ ] 禁用遥测组件（`com.oplus.statistics.rom`, `com.nearme.statistics.rom`）
-- [ ] 禁用安全中心相关组件（`com.oplus.safecenter`, `com.coloros.safesdkproxy`）
+- [x] ~~禁用遥测组件~~ `com.oplus.statistics.rom` 已禁用；`com.nearme.statistics.rom` 在 ColorOS 15 中不存在
+- [x] ~~禁用安全中心相关组件~~ `com.oplus.safecenter` 三重保护无法处理（需 root）；`com.coloros.safesdkproxy` 不存在
+- [x] ~~禁用应用安装扫描器~~ `com.oplus.athena` 已禁用
+- [x] ~~禁用云服务~~ `com.heytap.cloud` 已禁用
 - [x] ~~安装替代应用（Firefox, Gboard）后禁用系统浏览器和输入法~~ Gboard 已完成，Firefox 待安装
+- [ ] 安装 Firefox 替代夸克浏览器
 - [ ] 系统更新后检查被禁用的包是否被重新启用
 
 ---
 
-**最后更新**: 2026-02-13
+**最后更新**: 2026-02-13 (第二批 debloat)
