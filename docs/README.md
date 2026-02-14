@@ -39,10 +39,10 @@
 
 绕过OPPO安全机制，安装隐私友好的第三方应用。
 
-| 文档 | 解决的问题 | 推荐应用 |
-|------|-----------|---------|
-| [**bypass-security-scanner.md**](./03-app-management/bypass-security-scanner.md) | OPPO应用安装器强制云端扫描<br>篡改APK为"特供版" | - |
-| [**install-third-party-apps.md**](./03-app-management/install-third-party-apps.md) | 如何安全安装第三方应用商店<br>和隐私保护应用 | F-Droid<br>Aurora Store<br>Signal |
+| 文档 | 说明 | 涵盖内容 |
+|------|------|---------|
+| [**README.md**](./03-app-management/README.md) | 应用安全管理指南<br>威胁分析、扫描绕过、应用推荐与安装实践 | 绕过安全扫描<br>应用推荐与对比<br>APK安装与签名验证<br>隐私审计方法 |
+| [**debloat-main-system.md**](./03-app-management/debloat-main-system.md) | 主系统Debloat操作日志<br>ColorOS保护机制分析 | 20+组件禁用记录<br>三层保护机制分析<br>输入法替换记录 |
 
 **安装方式**：
 ```bash
@@ -67,11 +67,10 @@ adb install -r -d app.apk
 #### 🔒 需要加强隐私保护
 → 配置 [DNS泄漏防护](./02-privacy-hardening/dns-leak-prevention.md)
 → 配置 [WebRTC泄漏防护](./02-privacy-hardening/webrtc-leak-prevention.md)
-→ 安装 [隐私友好的应用](./03-app-management/install-third-party-apps.md)
+→ 安装 [隐私友好的应用](./03-app-management/README.md#4-系统分身策略--安全主战场)
 
 #### 📱 需要安装第三方应用
-→ 禁用 [OPPO安全扫描器](./03-app-management/bypass-security-scanner.md)
-→ 按照 [第三方应用安装指南](./03-app-management/install-third-party-apps.md)
+→ 参考 [应用安全管理指南](./03-app-management/README.md)（包含扫描绕过、应用推荐与安装实践）
 
 #### 🔬 深入研究技术原理
 → 阅读 [系统分身技术深度分析](./01-system-analysis/technical-deep-dive.md)
@@ -85,8 +84,8 @@ adb install -r -d app.apk
 |------|---------|--------|---------|
 | 系统架构分析 | 2 | ~25,000 | 2026-02-12 |
 | 隐私加固指南 | 2 | ~5,000 | 2026-02-12 |
-| 应用安装管理 | 2 | ~7,000 | 2026-02-12 |
-| **总计** | **6** | **~37,000** | - |
+| 应用安装管理 | 2 | ~8,000 | 2026-02-14 |
+| **总计** | **6** | **~38,000** | - |
 
 ---
 

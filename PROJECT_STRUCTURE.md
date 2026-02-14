@@ -22,9 +22,8 @@ Secure-Android-Sandbox/
 │   │   └── 📄 webrtc-leak-prevention.md  # WebRTC泄漏防护
 │   │
 │   └── 📁 03-app-management/             # 📦 应用安装管理
-│       ├── 📄 README.md                  # 板块总览
-│       ├── 📄 bypass-security-scanner.md # 绕过OPPO安全扫描
-│       └── 📄 install-third-party-apps.md # 第三方应用安装指南
+│       ├── 📄 README.md                  # 应用安全管理指南（安装策略与实践）
+│       └── 📄 debloat-main-system.md     # 主系统Debloat操作日志
 │
 └── 📁 tools/                             # 🛠️ 自动化工具（未来扩展）
     └── 📄 README.md                      # 工具说明
@@ -65,7 +64,7 @@ Secure-Android-Sandbox/
 
 | 文件类型 | 数量 | 总行数 | 说明 |
 |---------|------|--------|------|
-| 📄 Markdown | 13 | ~2500 | 技术文档 |
+| 📄 Markdown | 11 | ~2500 | 技术文档 |
 | 📄 配置文件 | 1 | 85 | .gitignore |
 | 📁 目录 | 4 | - | docs/, tools/, etc. |
 
