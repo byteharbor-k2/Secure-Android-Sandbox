@@ -93,9 +93,18 @@
 | `com.oplus.obrain` | AI大脑引擎 | **已禁用** |
 | `com.oplus.aiunit` | AI单元 | **已挂起** |
 | `com.opos.ads` | OPPO广告SDK | **已挂起** |
+| `com.coloros.activation` | 设备激活上报 | **已禁用** |
+| `com.coloros.bootreg` | 开机注册 | **已挂起** |
+| `com.oplus.onetrace` | 行为追踪 | **已禁用** |
+| `com.oplus.logkit` | 日志收集 | **已禁用** |
+| `com.oplus.crashbox` | 崩溃上报 | **已禁用** |
+| `com.oplus.dmp` | 数据管理平台 | **已禁用** |
+| `com.oplus.postmanservice` | 推送服务 | **已禁用** |
+| `com.heytap.mcs` | HeyTap推送 | **已禁用** |
+| `com.heytap.htms` | HeyTap遥测 | **已挂起** |
 
 > 已处理的包详见 [主系统Debloat记录](./docs/03-app-management/debloat-main-system.md)
 
 ---
 
-**最后更新**: 2026-02-13
+**最后更新**: 2026-02-14

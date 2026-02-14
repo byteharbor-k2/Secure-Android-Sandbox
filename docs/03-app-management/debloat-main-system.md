@@ -2,9 +2,9 @@
 
 ## 概述
 
-在主系统（User 0）中禁用/挂起高隐私风险的OPPO系统应用，包括AI功能、浏览器、广告SDK、遥测、云服务和安装扫描器。
+在主系统（User 0）中禁用/挂起高隐私风险的OPPO系统应用，包括AI功能、浏览器、广告SDK、遥测、云服务、安装扫描器、推送和行为追踪。
 
-**执行日期**: 2026-02-12 ~ 2026-02-13
+**执行日期**: 2026-02-12 ~ 2026-02-14
 **设备**: OPPO Reno9 5G / ColorOS 15
 **连接方式**: WiFi调试（ADB over WiFi）
 
@@ -60,6 +60,15 @@ adb shell am get-current-user  # 输出0=主系统, 10=系统分身
 | 云服务 | `com.heytap.cloud` | OPPO云服务 |
 | 扫描器 | `com.oplus.athena` | 应用安装扫描器 |
 | 安全中心 | `com.oplus.safecenter` | 安全中心（含反诈代理） |
+| 激活上报 | `com.coloros.activation` | 设备激活上报 |
+| 开机注册 | `com.coloros.bootreg` | 开机注册服务 |
+| 行为追踪 | `com.oplus.onetrace` | 用户行为链路追踪 |
+| 日志收集 | `com.oplus.logkit` | 系统日志采集上传 |
+| 崩溃上报 | `com.oplus.crashbox` | 崩溃日志回传 |
+| 数据平台 | `com.oplus.dmp` | 数据管理平台 |
+| 推送服务 | `com.oplus.postmanservice` | OPPO推送服务 |
+| 推送服务 | `com.heytap.mcs` | HeyTap推送服务 |
+| 遥测 | `com.heytap.htms` | HeyTap遥测服务 |
 
 ### 第一批执行结果 (2026-02-12)
 
@@ -112,6 +121,27 @@ com.nearme.statistics.rom   # ColorOS 15 已合并到 com.oplus.statistics.rom
 com.coloros.safesdkproxy     # 本设备不存在
 ```
 
+### 第三批执行结果 (2026-02-14)
+
+#### 成功禁用（disabled-user）
+
+```bash
+adb shell pm disable-user --user 0 com.coloros.activation    # ✅ disabled-user
+adb shell pm disable-user --user 0 com.oplus.onetrace        # ✅ disabled-user
+adb shell pm disable-user --user 0 com.oplus.logkit          # ✅ disabled-user
+adb shell pm disable-user --user 0 com.oplus.crashbox        # ✅ disabled-user
+adb shell pm disable-user --user 0 com.oplus.dmp             # ✅ disabled-user
+adb shell pm disable-user --user 0 com.oplus.postmanservice  # ✅ disabled-user
+adb shell pm disable-user --user 0 com.heytap.mcs            # ✅ disabled-user
+```
+
+#### 系统保护包 — 通过 suspend 挂起
+
+```bash
+adb shell pm suspend --user 0 com.coloros.bootreg  # ✅ suspended (disable-user 返回 default)
+adb shell pm suspend --user 0 com.heytap.htms      # ✅ suspended (disable-user 返回 default)
+```
+
 ### 全部状态汇总
 
 | 包名 | disable-user | uninstall | suspend | 最终状态 |
@@ -127,6 +157,15 @@ com.coloros.safesdkproxy     # 本设备不存在
 | `com.heytap.browser` | ❌ default | ❌ 拦截 | ✅ | **已挂起** |
 | `com.oplus.aiunit` | ❌ default | ❌ 拦截 | ✅ | **已挂起** |
 | `com.opos.ads` | ❌ default | ❌ 拦截 | ✅ | **已挂起** |
+| `com.coloros.activation` | ✅ | - | - | **已禁用** |
+| `com.oplus.onetrace` | ✅ | - | - | **已禁用** |
+| `com.oplus.logkit` | ✅ | - | - | **已禁用** |
+| `com.oplus.crashbox` | ✅ | - | - | **已禁用** |
+| `com.oplus.dmp` | ✅ | - | - | **已禁用** |
+| `com.oplus.postmanservice` | ✅ | - | - | **已禁用** |
+| `com.heytap.mcs` | ✅ | - | - | **已禁用** |
+| `com.coloros.bootreg` | ❌ default | - | ✅ | **已挂起** |
+| `com.heytap.htms` | ❌ default | - | ✅ | **已挂起** |
 | `com.sohu.inputmethod.sogouoem` | - | ✅ | - | **已卸载** |
 | `com.oplus.safecenter` | ❌ default | ❌ 拦截 | ❌ 拒绝 | ⚠️ **无法处理** |
 
@@ -152,8 +191,8 @@ java.lang.SecurityException: adb clearing user data is forbidden.
 
 | 等级 | 可用操作 | 示例包 |
 |------|---------|--------|
-| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud` |
-| **重要** | disable ❌, suspend ✅ | `com.heytap.browser`, `com.oplus.aiunit`, `com.opos.ads` |
+| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud`, `com.coloros.activation`, `com.oplus.onetrace`, `com.oplus.logkit` |
+| **重要** | disable ❌, suspend ✅ | `com.heytap.browser`, `com.oplus.aiunit`, `com.opos.ads`, `com.coloros.bootreg`, `com.heytap.htms` |
 | **核心** | disable ❌, suspend ❌, uninstall ❌ | `com.oplus.safecenter`（仅 root 可处理） |
 
 ### 绕过策略
@@ -181,11 +220,20 @@ adb shell pm enable --user 0 com.yuemeng.speechsuite
 adb shell pm enable --user 0 com.oplus.statistics.rom
 adb shell pm enable --user 0 com.oplus.athena
 adb shell pm enable --user 0 com.heytap.cloud
+adb shell pm enable --user 0 com.coloros.activation
+adb shell pm enable --user 0 com.oplus.onetrace
+adb shell pm enable --user 0 com.oplus.logkit
+adb shell pm enable --user 0 com.oplus.crashbox
+adb shell pm enable --user 0 com.oplus.dmp
+adb shell pm enable --user 0 com.oplus.postmanservice
+adb shell pm enable --user 0 com.heytap.mcs
 
 # 解除挂起的包
 adb shell pm unsuspend --user 0 com.heytap.browser
 adb shell pm unsuspend --user 0 com.oplus.aiunit
 adb shell pm unsuspend --user 0 com.opos.ads
+adb shell pm unsuspend --user 0 com.coloros.bootreg
+adb shell pm unsuspend --user 0 com.heytap.htms
 
 # 恢复已卸载的包（需恢复出厂或通过系统更新）
 # com.sohu.inputmethod.sogouoem — 已从 User 0 卸载，无法通过 ADB 恢复
@@ -252,10 +300,14 @@ adb shell pm unsuspend --user 0 com.opos.ads
 - [x] ~~禁用安全中心相关组件~~ `com.oplus.safecenter` 三重保护无法处理（需 root）；`com.coloros.safesdkproxy` 不存在
 - [x] ~~禁用应用安装扫描器~~ `com.oplus.athena` 已禁用
 - [x] ~~禁用云服务~~ `com.heytap.cloud` 已禁用
+- [x] ~~禁用追踪/推送/日志组件~~ `activation`, `bootreg`, `onetrace`, `logkit`, `crashbox`, `dmp`, `postmanservice`, `mcs`, `htms` 已处理
 - [x] ~~安装替代应用（Firefox, Gboard）后禁用系统浏览器和输入法~~ Gboard 已完成，Firefox 待安装
+- [ ] 禁用中高危应用（应用商店、主题商店、游戏中心、内容分发等）
+- [ ] 禁用中危应用（语音管理、搜索、位置代理等）
 - [ ] 安装 Firefox 替代夸克浏览器
+- [ ] 在系统分身（User 10）中执行更全面的debloat
 - [ ] 系统更新后检查被禁用的包是否被重新启用
 
 ---
 
-**最后更新**: 2026-02-13 (第二批 debloat)
+**最后更新**: 2026-02-14 (第三批 debloat)
