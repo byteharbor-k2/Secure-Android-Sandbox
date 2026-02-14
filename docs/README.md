@@ -74,7 +74,7 @@ adb install -r -d app.apk
 
 #### 🔬 深入研究技术原理
 → 阅读 [系统分身技术深度分析](./01-system-analysis/technical-deep-dive.md)
-→ 阅读 [项目背景调研报告](../安卓手机安全与开发指南.md)
+→ 阅读 [项目主页 - 威胁模型与安全研究](../README.md)
 
 ---
 
@@ -128,8 +128,7 @@ vim docs/README.md
 
 ### 项目核心文档
 - [CLAUDE.md](../CLAUDE.md) - AI Agent操作手册（项目总纲）
-- [context.md](../context.md) - YouTube视频总结（威胁模型）
-- [安卓手机安全与开发指南.md](../安卓手机安全与开发指南.md) - 深度研究报告
+- [README.md](../README.md) - 项目主页（威胁模型与安全研究）
 
 ### 外部参考
 - [ColorOS 官方网站](https://www.coloros.com/)

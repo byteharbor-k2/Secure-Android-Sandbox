@@ -3,9 +3,8 @@
 ```
 Secure-Android-Sandbox/
 │
+├── 📄 README.md                          # 🏠 项目主页（威胁模型与安全研究）
 ├── 📄 CLAUDE.md                          # 🎯 AI Agent操作手册（项目总纲）
-├── 📄 context.md                         # 📺 YouTube视频总结（威胁模型）
-├── 📄 安卓手机安全与开发指南.md          # 📚 深度研究报告
 ├── 📄 .gitignore                         # Git忽略规则
 ├── 📄 PROJECT_STRUCTURE.md               # 📋 本文件
 │
@@ -36,7 +35,7 @@ Secure-Android-Sandbox/
 
 ### 🆕 新用户入门
 
-1. **了解项目背景** → [context.md](./context.md)
+1. **了解项目背景** → [README.md](./README.md)
 2. **阅读操作手册** → [CLAUDE.md](./CLAUDE.md)
 3. **快速参考** → [docs/01-system-analysis/README.md](./docs/01-system-analysis/README.md)
 
@@ -49,7 +48,7 @@ Secure-Android-Sandbox/
 ### 🔒 隐私保护
 
 1. **网络层防护** → [docs/02-privacy-hardening/](./docs/02-privacy-hardening/)
-2. **威胁模型分析** → [安卓手机安全与开发指南.md](./安卓手机安全与开发指南.md)
+2. **威胁模型分析** → [README.md](./README.md)
 3. **安全清理清单** → [CLAUDE.md - debloat清单](./CLAUDE.md#b-权限剥夺-debloating-via-adb)
 
 ### 🔬 深度研究
@@ -64,7 +63,7 @@ Secure-Android-Sandbox/
 
 | 文件类型 | 数量 | 总行数 | 说明 |
 |---------|------|--------|------|
-| 📄 Markdown | 11 | ~2500 | 技术文档 |
+| 📄 Markdown | 10 | ~2500 | 技术文档 |
 | 📄 配置文件 | 1 | 85 | .gitignore |
 | 📁 目录 | 4 | - | docs/, tools/, etc. |
 

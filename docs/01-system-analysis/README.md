@@ -128,7 +128,7 @@ System User              Secondary User
 
 - 📄 [完整技术分析文档](./system_clone_technical_analysis.md) - 深入技术原理和架构分析
 - 📄 [项目主文档](../CLAUDE.md) - Secure Android Sandbox项目总览
-- 📄 [威胁模型](../context.md) - 基于《知识噪音》的安全威胁分析
+- 📄 [威胁模型](../../README.md) - 基于《知识噪音》的安全威胁分析
 
 ---
 
