@@ -372,7 +372,7 @@ adb pull /data/app/~~hash~~/com.example.app-hash/base.apk
 
 - [主系统 Debloat 操作日志](./debloat-main-system.md) — 详细的组件禁用记录与 ColorOS 保护机制分析
 - [系统分析与 ADB 操作](../01-system-analysis/README.md)
-- [隐私加固配置](../02-privacy-hardening/)
+- [网络安全配置](../02-network-security/)
 
 ---
 

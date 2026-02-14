@@ -15,7 +15,7 @@ Secure-Android-Sandbox/
 │   │   ├── 📄 README.md                  # 快速参考指南
 │   │   └── 📄 technical-deep-dive.md     # 技术深度分析（13章节）
 │   │
-│   ├── 📁 02-privacy-hardening/          # 🔒 隐私加固指南
+│   ├── 📁 02-network-security/            # 🔒 网络安全
 │   │   ├── 📄 README.md                  # 板块总览
 │   │   ├── 📄 dns-leak-prevention.md     # DNS泄漏防护
 │   │   └── 📄 webrtc-leak-prevention.md  # WebRTC泄漏防护
@@ -47,7 +47,7 @@ Secure-Android-Sandbox/
 
 ### 🔒 隐私保护
 
-1. **网络层防护** → [docs/02-privacy-hardening/](./docs/02-privacy-hardening/)
+1. **网络层防护** → [docs/02-network-security/](./docs/02-network-security/)
 2. **威胁模型分析** → [README.md](./README.md)
 3. **安全清理清单** → [CLAUDE.md - debloat清单](./CLAUDE.md#b-权限剥夺-debloating-via-adb)
 

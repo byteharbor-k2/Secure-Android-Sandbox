@@ -51,7 +51,7 @@
 - 私有DNS (AdGuard / NextDNS) 阻断遥测域名
 - VPN 锁死模式,强制所有流量经过加密隧道
 
-详细配置见 → [docs/02-privacy-hardening/](./docs/02-privacy-hardening/)
+详细配置见 → [docs/02-network-security/](./docs/02-network-security/)
 
 ---
 
@@ -116,7 +116,7 @@ Secure-Android-Sandbox/
 ├── PROJECT_STRUCTURE.md   # 详细目录结构说明
 ├── docs/                  # 技术文档中心
 │   ├── 01-system-analysis/    # 系统架构分析
-│   ├── 02-privacy-hardening/  # 隐私加固指南
+│   ├── 02-network-security/   # 网络安全
 │   └── 03-app-management/     # 应用管理与Debloat日志
 ├── scripts/               # Frida脚本
 └── tools/                 # 自动化工具
