@@ -18,6 +18,7 @@
 | `me.zhanghai.android.files` | Material Files (替代 OPPO 文件管理) |
 | `org.mozilla.firefox` | Firefox (默认浏览器，替代 OPPO 浏览器) |
 | `notion.id` | Notion (替代 OPPO 便签) |
+| `app.lawnchair` | Lawnchair (默认桌面，替代 OPPO 桌面) |
 
 ---
 
@@ -104,6 +105,7 @@
 | `com.coloros.gallery3d` | OPPO相册 | **已禁用** (替换为 Fossify Gallery) |
 | `com.coloros.filemanager` | OPPO文件管理 | **已禁用** (替换为 Material Files) |
 | `com.coloros.note` | OPPO便签 | **已禁用** (替换为 Notion) |
+| `com.android.launcher` | OPPO桌面 (ColorOS Launcher) | **已禁用** (替换为 Lawnchair) |
 
 > 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
 
