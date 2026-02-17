@@ -94,12 +94,15 @@
 | `com.bytedance.dreamina` | 即梦AI |
 | `com.larus.nova` | 豆包（字节AI） |
 
-### Install using ADB (safe and open source software)
+### Install using ADB or Aurora Store and F-Droid (safe and open source software)
 | 包名 | 应用 |
 |------|------|
 | `com.google.android.inputmethod.latin` | Gboard |
 | `org.fdroid.fdroid` | F-Droid |
 | `com.aurora.store` | Aurora Store |
+| `com.v2ray.ang` | v2rayNG |
+| `org.fossify.gallery` | Fossify Gallery (替代 OPPO 相册) |
+| `me.zhanghai.android.files` | Material Files (替代 OPPO 文件管理) |
 
 ---
 
@@ -113,7 +116,8 @@
 | `com.coloros.calculator` | 计算器 | |
 | `com.coloros.calendar` | 日历 | |
 | `com.coloros.compass2` | 指南针 | |
-| `com.coloros.filemanager` | 文件管理器 | |
+| `com.coloros.gallery3d` | 相册 | → 已禁用，见下方 |
+| `com.coloros.filemanager` | 文件管理器 | → 已禁用，见下方 |
 | `com.coloros.note` | 便签 | |
 | `com.coloros.soundrecorder` | 录音机 | |
 | `com.coloros.translate` | 翻译 | |
@@ -182,6 +186,8 @@
 | `com.oplus.ocar` | OPPO汽车 | **已禁用** |
 | `com.heytap.colorfulengine` | 彩色引擎 | **已禁用** |
 | `com.coloros.assistantscreen` | 负一屏 | **已挂起** |
+| `com.coloros.gallery3d` | OPPO相册 | **已禁用** (替换为 Fossify Gallery) |
+| `com.coloros.filemanager` | OPPO文件管理 | **已禁用** (替换为 Material Files) |
 
 > 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
 
