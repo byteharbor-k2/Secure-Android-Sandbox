@@ -10,7 +10,6 @@
 | 包名 | 应用 |
 |------|------|
 | `com.microsoft.bing` | Bing |
-| `com.apkpure.aegon` | APKPure |
 | `org.fdroid.fdroid` | F-Droid |
 | `com.aurora.store` | Aurora Store |
 | `com.google.android.inputmethod.latin` | Gboard |
