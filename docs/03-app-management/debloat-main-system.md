@@ -142,6 +142,33 @@ adb shell pm suspend --user 0 com.coloros.bootreg  # ✅ suspended (disable-user
 adb shell pm suspend --user 0 com.heytap.htms      # ✅ suspended (disable-user 返回 default)
 ```
 
+### 第四批执行结果 (2026-02-17)
+
+#### 成功禁用（disabled-user）
+
+```bash
+adb shell pm disable-user --user 0 com.oplus.appdetail  # ✅ disabled-user（安装验证 UI）
+```
+
+#### 系统级验证开关关闭
+
+```bash
+adb shell settings put global verifier_verify_adb_installs 0  # ✅
+adb shell settings put global package_verifier_enable 0        # ✅
+```
+
+#### APK 完整性校验
+
+禁用 `com.oplus.appdetail` 后，通过 ADB 安装 F-Droid 和 AuroraStore：
+- "Sensitive permissions requested" 警告页已消失
+- 安装器底部仍显示 "Installation secured by Smart Shield"（`com.oplus.safecenter` 无法禁用）
+- **验证方法**: 对比本地原始 APK 与设备上拉取的已安装 APK 的 SHA-256 哈希及 `apksigner` 签名证书
+- **结论**: 两个 APK 哈希及签名均完全一致，Smart Shield 扫描为只读操作，不会篡改 APK
+
+#### `com.oplus.safecenter` 调研结论
+
+经 XDA/GitHub/Reddit 多源调研，确认非 root 无法禁用。框架层 `OplusForbidUninstallAppManager` + `OplusForbidHideOrDisableManager` 拦截所有禁用/卸载操作，Canta + Shizuku 同样受限。缓解方案：通过网络层阻断遥测域名。
+
 ### 全部状态汇总
 
 | 包名 | disable-user | uninstall | suspend | 最终状态 |
@@ -167,6 +194,7 @@ adb shell pm suspend --user 0 com.heytap.htms      # ✅ suspended (disable-user
 | `com.coloros.bootreg` | ❌ default | - | ✅ | **已挂起** |
 | `com.heytap.htms` | ❌ default | - | ✅ | **已挂起** |
 | `com.sohu.inputmethod.sogouoem` | - | ✅ | - | **已卸载** |
+| `com.oplus.appdetail` | ✅ | - | - | **已禁用** |
 | `com.oplus.safecenter` | ❌ default | ❌ 拦截 | ❌ 拒绝 | ⚠️ **无法处理** |
 
 ---
@@ -191,7 +219,7 @@ java.lang.SecurityException: adb clearing user data is forbidden.
 
 | 等级 | 可用操作 | 示例包 |
 |------|---------|--------|
-| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud`, `com.coloros.activation`, `com.oplus.onetrace`, `com.oplus.logkit` |
+| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud`, `com.coloros.activation`, `com.oplus.onetrace`, `com.oplus.logkit`, `com.oplus.appdetail` |
 | **重要** | disable ❌, suspend ✅ | `com.heytap.browser`, `com.oplus.aiunit`, `com.opos.ads`, `com.coloros.bootreg`, `com.heytap.htms` |
 | **核心** | disable ❌, suspend ❌, uninstall ❌ | `com.oplus.safecenter`（仅 root 可处理） |
 
@@ -310,4 +338,4 @@ adb shell pm unsuspend --user 0 com.heytap.htms
 
 ---
 
-**最后更新**: 2026-02-14 (第三批 debloat)
+**最后更新**: 2026-02-17 (第四批 debloat — 安装验证 UI 禁用 + APK 完整性校验 + safecenter 调研)
