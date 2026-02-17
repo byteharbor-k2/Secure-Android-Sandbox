@@ -1,98 +1,11 @@
 # 主系统应用清单 (User 0)
 
 **设备**: OPPO Reno9 5G / ColorOS 15
-**记录日期**: 2026-02-12 ~ 2026-02-17
 
 ---
 
 ## 用户安装的第三方应用
-
-### 金融/银行类
-
-| 包名 | 应用 |
-|------|------|
-| `com.eg.android.AlipayGphone` | 支付宝 |
-| `com.icbc` | 工商银行 |
-| `com.android.bankabc` | 农业银行 |
-| `com.chinamworld.bocmbci` | 中国银行 |
-| `cmb.pb` | 招商银行 |
-| `com.hexin.plat.android` | 同花顺 |
-| `com.unionpay.tsmservice` | 云闪付 |
-| `com.finshell.wallet` | 翼支付 |
-
-### 社交/通讯
-
-| 包名 | 应用 |
-|------|------|
-| `com.tencent.mm` | 微信 |
-| `com.tencent.mobileqq` | QQ |
-| `com.tencent.wemeet.app` | 腾讯会议 |
-
-### 购物/外卖
-
-| 包名 | 应用 |
-|------|------|
-| `com.taobao.taobao` | 淘宝 |
-| `com.icloudoor.bizranking` | 盖得排行 |
-| `com.taobao.idlefish` | 闲鱼 |
-| `com.jingdong.app.mall` | 京东 |
-| `com.shizhuang.duapp` | 得物 |
-| `com.jiuwu` | 95分（二手交易）
-| `cn.amazon.mShop.android` | Amazon |
-| `com.sankuai.meituan` | 美团 |
-| `com.dianping.v1` | 大众点评 |
-| `com.starbucks.cn` | 星巴克 |
-| `com.mcdonalds.gma.cn` | 麦当劳 |
-| `cn.dominos.pizza` | 达美乐 |
-| `com.yek.android.kfc.activitys` | KFC |
-
-### 娱乐/内容
-
-| 包名 | 应用 |
-|------|------|
-| `com.ss.android.ugc.aweme` | 抖音 |
-| `com.xingin.xhs` | 小红书 |
-| `tv.danmaku.bili` | B站 |
-| `com.tencent.qqmusic` | QQ音乐 |
-| `com.sankuai.moviepro` | 猫眼电影 |
-| `com.accuvally.hdtui` | 活动行 |
-
-### 出行/生活
-
-| 包名 | 应用 |
-|------|------|
-| `com.baidu.BaiduMap` | 百度地图 |
-| `ctrip.android.view` | 携程 |
-| `com.dm.metro` | 地铁 |
-| `com.jingyao.easybike` | 共享单车 |
-| `com.ss.android.auto` | 懂车帝 |
-| `com.MobileTicket` | 铁路12306 |
-| `com.tmri.app.main` | 交管12123 |
-| `com.lianjia.beike` | 贝壳找房 |
-| `com.htinns` | 华住会 |
-
-### 求职/Work
-
-| 包名 | 应用 |
-|------|------|
-| `com.hpbr.bosszhipin` | Boss直聘 |
-| `com.lietou.mishu` | 猎聘 |
-
-### 运营商
-
-| 包名 | 应用 |
-|------|------|
-| `com.greenpoint.android.mc10086.activity` | 中国移动 |
-| `com.sinovatech.unicom.ui` | 中国联通 |
-
-### 国产AI软件
-
-| 包名 | 应用 |
-|------|------|
-| `com.quark.browser` | 夸克浏览器 |
-| `com.aliyun.tongyi` | 通义千问 |
-| `com.bytedance.dreamina` | 即梦AI |
-| `com.larus.nova` | 豆包（字节AI） |
+平时日常会使用到的国内APP, 随意从手机厂商自带的应用商店或下边介绍的Aurora Store或F-Droid（可能没有， 国内app大多不开源）安装， Tips 建议从Aurora Store安装
 
 ### Install using ADB or Aurora Store and F-Droid (safe and open source software)
 | 包名 | 应用 |
@@ -103,6 +16,8 @@
 | `com.v2ray.ang` | v2rayNG |
 | `org.fossify.gallery` | Fossify Gallery (替代 OPPO 相册) |
 | `me.zhanghai.android.files` | Material Files (替代 OPPO 文件管理) |
+| `org.mozilla.firefox` | Firefox (默认浏览器，替代 OPPO 浏览器) |
+| `notion.id` | Notion (替代 OPPO 便签) |
 
 ---
 
@@ -118,7 +33,7 @@
 | `com.coloros.compass2` | 指南针 | |
 | `com.coloros.gallery3d` | 相册 | → 已禁用，见下方 |
 | `com.coloros.filemanager` | 文件管理器 | → 已禁用，见下方 |
-| `com.coloros.note` | 便签 | |
+| `com.coloros.note` | 便签 | → 已禁用，见下方 |
 | `com.coloros.soundrecorder` | 录音机 | |
 | `com.coloros.translate` | 翻译 | |
 | `com.coloros.weather2` | 天气 | |
@@ -138,7 +53,7 @@
 | `com.oplus.athena` | 应用安装扫描器 | **已禁用** |
 | `com.oplus.appdetail` | 安装验证 UI | **已禁用** |
 | `com.sohu.inputmethod.sogouoem` | 搜狗输入法（云端上传） | **已卸载** (替换为 Gboard) |
-| `com.heytap.browser` | OPPO浏览器 | **已挂起** |
+| `com.heytap.browser` | OPPO浏览器 | **已挂起** (替换为 Firefox) |
 | `com.heytap.cloud` | OPPO云服务 | **已禁用** |
 | `com.oplus.deepthinker` | AI行为分析 | **已禁用** |
 | `com.oplus.obrain` | AI大脑引擎 | **已禁用** |
@@ -188,6 +103,7 @@
 | `com.coloros.assistantscreen` | 负一屏 | **已挂起** |
 | `com.coloros.gallery3d` | OPPO相册 | **已禁用** (替换为 Fossify Gallery) |
 | `com.coloros.filemanager` | OPPO文件管理 | **已禁用** (替换为 Material Files) |
+| `com.coloros.note` | OPPO便签 | **已禁用** (替换为 Notion) |
 
 > 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
 
