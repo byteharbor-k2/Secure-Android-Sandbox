@@ -2,6 +2,16 @@
 
 **设备**: OPPO Reno9 5G / ColorOS 15
 
+## 系统服务状态
+
+| 服务 | 状态 | 说明 |
+|------|------|------|
+| **GMS (Google Mobile Services)** | 已开启 | 提供 FCM 推送（Signal/Notion 等依赖），未登录 Google 账号 |
+| **OPPO 账号** | 已登录 | NFC 刷卡（银行卡/公交卡）依赖 |
+| **OPPO Push (HeyTap MCS)** | 已禁用 | 国内主流 App 有自建长连接，影响有限 |
+
+> GMS 详细技术分析见 [Google Mobile Services 技术分析](./google-mobile-services.md)
+
 ---
 
 ## 用户安装的第三方应用
