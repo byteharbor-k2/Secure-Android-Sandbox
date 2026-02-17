@@ -33,24 +33,29 @@
 | 包名 | 应用 |
 |------|------|
 | `com.taobao.taobao` | 淘宝 |
-| `com.jingdong.app.mall` | 京东 |
+| `com.icloudoor.bizranking` | 盖得排行 |
 | `com.taobao.idlefish` | 闲鱼 |
+| `com.jingdong.app.mall` | 京东 |
+| `com.shizhuang.duapp` | 得物 |
+| `com.jiuwu` | 95分（二手交易）
+| `cn.amazon.mShop.android` | Amazon |
 | `com.sankuai.meituan` | 美团 |
 | `com.dianping.v1` | 大众点评 |
-| `com.shizhuang.duapp` | 得物 |
-| `com.xingin.xhs` | 小红书 |
-| `cn.amazon.mShop.android` | Amazon |
-| `com.lianjia.beike` | 贝壳找房 |
-| `com.jiuwu` | 95分（二手交易） |
+| `com.starbucks.cn` | 星巴克 |
+| `com.mcdonalds.gma.cn` | 麦当劳 |
+| `cn.dominos.pizza` | 达美乐 |
+| `com.yek.android.kfc.activitys` | KFC |
 
 ### 娱乐/内容
 
 | 包名 | 应用 |
 |------|------|
 | `com.ss.android.ugc.aweme` | 抖音 |
+| `com.xingin.xhs` | 小红书 |
 | `tv.danmaku.bili` | B站 |
 | `com.tencent.qqmusic` | QQ音乐 |
 | `com.sankuai.moviepro` | 猫眼电影 |
+| `com.accuvally.hdtui` | 活动行 |
 
 ### 出行/生活
 
@@ -60,17 +65,13 @@
 | `ctrip.android.view` | 携程 |
 | `com.dm.metro` | 地铁 |
 | `com.jingyao.easybike` | 共享单车 |
+| `com.ss.android.auto` | 懂车帝 |
 | `com.MobileTicket` | 铁路12306 |
 | `com.tmri.app.main` | 交管12123 |
-| `com.starbucks.cn` | 星巴克 |
-| `com.mcdonalds.gma.cn` | 麦当劳 |
-| `cn.dominos.pizza` | 达美乐 |
-| `com.yek.android.kfc.activitys` | KFC |
+| `com.lianjia.beike` | 贝壳找房 |
 | `com.htinns` | 华住会 |
-| `com.icloudoor.bizranking` | 盖得排行 |
-| `com.accuvally.hdtui` | 活动行 |
 
-### 求职
+### 求职/Work
 
 | 包名 | 应用 |
 |------|------|
@@ -84,7 +85,7 @@
 | `com.greenpoint.android.mc10086.activity` | 中国移动 |
 | `com.sinovatech.unicom.ui` | 中国联通 |
 
-### 工具/效率
+### 国产AI软件
 
 | 包名 | 应用 |
 |------|------|
@@ -92,7 +93,8 @@
 | `com.aliyun.tongyi` | 通义千问 |
 | `com.bytedance.dreamina` | 即梦AI |
 | `com.larus.nova` | 豆包（字节AI） |
-| `com.ss.android.auto` | 懂车帝 |
+
+### Install using ADB (safe and open source software)
 | `com.google.android.inputmethod.latin` | Gboard |
 | `org.fdroid.fdroid` | F-Droid |
 | `com.aurora.store` | Aurora Store |
@@ -169,6 +171,15 @@
 | `com.heytap.tas` | HeyTap遥测分析 | **已挂起** |
 | `com.oplus.pantanal.ums` | 用户管理服务 | **已挂起** |
 | `com.heytap.quicksearchbox` | OPPO搜索 | **已挂起** |
+| `com.coloros.childrenspace` | 儿童空间 | **已禁用** |
+| `com.coloros.healthcheck` | 设备健康检查 | **已禁用** |
+| `com.oplus.omoji` | Omoji表情 | **已禁用** |
+| `com.oplus.upgradeguide` | 升级指南 | **已禁用** |
+| `com.oplus.cardigitalkey` | 车钥匙 | **已禁用** |
+| `com.heytap.opluscarlink` | OPPO车联 | **已禁用** |
+| `com.oplus.ocar` | OPPO汽车 | **已禁用** |
+| `com.heytap.colorfulengine` | 彩色引擎 | **已禁用** |
+| `com.coloros.assistantscreen` | 负一屏 | **已挂起** |
 
 > 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
 
