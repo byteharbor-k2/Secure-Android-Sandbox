@@ -61,6 +61,32 @@ adb shell pm uninstall --user 0 com.sohu.inputmethod.sogouoem
 
 ---
 
+## 多用户安装说明
+
+`adb install` **默认为所有用户安装**（APK 写入全局共享的 `/data/app/`），与手机端安装行为不同（仅当前前台用户）。
+
+如需指定安装目标用户，使用 `--user` 参数：
+
+```bash
+# 仅安装到主系统 (User 0)
+adb install --user 0 app.apk
+
+# 仅安装到系统分身 (User 10)
+adb install --user 10 app.apk
+
+# 默认行为（不加 --user）= 所有用户
+adb install app.apk
+```
+
+从特定用户移除（不影响其他用户）：
+
+```bash
+adb shell pm uninstall --user 0 <package_name>   # 从主系统移除
+adb shell pm uninstall --user 10 <package_name>  # 从系统分身移除
+```
+
+---
+
 ## 注意事项
 
 - XAPK 格式不能直接 `adb install`，必须解压后用 `adb install-multiple`

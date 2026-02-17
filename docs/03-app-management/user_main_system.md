@@ -95,6 +95,8 @@
 | `com.larus.nova` | 豆包（字节AI） |
 
 ### Install using ADB (safe and open source software)
+| 包名 | 应用 |
+|------|------|
 | `com.google.android.inputmethod.latin` | Gboard |
 | `org.fdroid.fdroid` | F-Droid |
 | `com.aurora.store` | Aurora Store |
