@@ -160,6 +160,15 @@
 | `com.heytap.market` | HeyTap应用市场 | **已挂起** |
 | `com.heytap.pictorial` | HeyTap壁纸杂志 | **已挂起** |
 | `com.zxscnew` | 世纪证券 | **已卸载** |
+| `com.oplus.metis` | 行为分析/推荐引擎 | **已禁用** |
+| `com.oppo.ctautoregist` | CT自动注册 | **已禁用** |
+| `com.oplus.ovoicemanager` | 语音管理 | **已禁用** |
+| `com.oplus.ovoicemanager.wakeup` | 语音唤醒 | **已禁用** |
+| `com.oplus.locationproxy` | 位置代理 | **已禁用** |
+| `com.coloros.remoteguardservice` | 远程防护 | **已禁用** |
+| `com.heytap.tas` | HeyTap遥测分析 | **已挂起** |
+| `com.oplus.pantanal.ums` | 用户管理服务 | **已挂起** |
+| `com.heytap.quicksearchbox` | OPPO搜索 | **已挂起** |
 
 > 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
 
