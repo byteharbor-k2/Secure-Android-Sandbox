@@ -96,7 +96,6 @@
 | `com.google.android.inputmethod.latin` | Gboard |
 | `org.fdroid.fdroid` | F-Droid |
 | `com.aurora.store` | Aurora Store |
-| `com.zxscnew` | 世纪证券（前海金帆） |
 
 ---
 
@@ -118,22 +117,13 @@
 | `com.heytap.health` | 健康 | |
 | `com.heytap.music` | 音乐 | |
 | `com.heytap.reader` | 阅读 | |
-| `com.heytap.themestore` | 主题商店 | 待 debloat |
-| `com.heytap.yoli` | Yoli（短视频） | 待 debloat |
-| `com.nearme.gamecenter` | 游戏中心 | 待 debloat |
-| `com.oplus.cupid` | 系统推荐服务 | 待 debloat |
-| `com.oplus.games` | 游戏服务 | 待 debloat |
 | `com.oplus.melody` | 铃声 | |
-| `com.oplus.member` | 会员中心 | 待 debloat |
-| `com.oplus.play` | 应用商店（Play） | 待 debloat |
-| `com.oppo.community` | OPPO社区 | 待 debloat |
-| `com.oppo.store` | OPPO商城 | 待 debloat |
 
 ---
 
-## 隐私风险较高的系统应用
+## 已处理的系统应用（禁用/挂起/卸载）
 
-| 包名 | 风险 | 当前状态 |
+| 包名 | 说明 | 当前状态 |
 |------|------|----------|
 | `com.oplus.statistics.rom` | 遥测上报 | **已禁用** |
 | `com.oplus.safecenter` | 安全中心（含反诈代理） | ⚠️ **无法处理**（三重保护） |
@@ -155,6 +145,21 @@
 | `com.oplus.postmanservice` | 推送服务 | **已禁用** |
 | `com.heytap.mcs` | HeyTap推送 | **已禁用** |
 | `com.heytap.htms` | HeyTap遥测 | **已挂起** |
+| `com.heytap.themestore` | 主题商店 | **已禁用** |
+| `com.heytap.yoli` | Yoli短视频 | **已禁用** |
+| `com.nearme.gamecenter` | 游戏中心 | **已禁用** |
+| `com.oplus.games` | 游戏服务 | **已禁用** |
+| `com.oplus.cupid` | 系统推荐服务 | **已禁用** |
+| `com.oplus.member` | 会员中心 | **已禁用** |
+| `com.oplus.play` | OPPO应用商店 | **已禁用** |
+| `com.oppo.community` | OPPO社区 | **已禁用** |
+| `com.oppo.store` | OPPO商城 | **已禁用** |
+| `com.oplus.vip` | VIP服务 | **已禁用** |
+| `com.coloros.video` | ColorOS视频 | **已禁用** |
+| `com.coloros.karaoke` | 卡拉OK | **已禁用** |
+| `com.heytap.market` | HeyTap应用市场 | **已挂起** |
+| `com.heytap.pictorial` | HeyTap壁纸杂志 | **已挂起** |
+| `com.zxscnew` | 世纪证券 | **已卸载** |
 
 > 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
 

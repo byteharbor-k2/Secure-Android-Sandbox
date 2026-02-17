@@ -169,6 +169,40 @@ adb shell settings put global package_verifier_enable 0        # ✅
 
 经 XDA/GitHub/Reddit 多源调研，确认非 root 无法禁用。框架层 `OplusForbidUninstallAppManager` + `OplusForbidHideOrDisableManager` 拦截所有禁用/卸载操作，Canta + Shizuku 同样受限。缓解方案：通过网络层阻断遥测域名。
 
+### 第五批执行结果 (2026-02-17)
+
+目标：内容分发、应用商店、广告推荐类预装应用。
+
+#### 成功禁用（disabled-user）
+
+```bash
+adb shell pm disable-user --user 0 com.heytap.themestore   # ✅ disabled-user（主题商店）
+adb shell pm disable-user --user 0 com.heytap.yoli          # ✅ disabled-user（Yoli 短视频）
+adb shell pm disable-user --user 0 com.nearme.gamecenter    # ✅ disabled-user（游戏中心）
+adb shell pm disable-user --user 0 com.oplus.games          # ✅ disabled-user（游戏服务）
+adb shell pm disable-user --user 0 com.oplus.cupid          # ✅ disabled-user（系统推荐服务）
+adb shell pm disable-user --user 0 com.oplus.member         # ✅ disabled-user（会员中心）
+adb shell pm disable-user --user 0 com.oplus.play           # ✅ disabled-user（OPPO 应用商店）
+adb shell pm disable-user --user 0 com.oppo.community       # ✅ disabled-user（OPPO 社区）
+adb shell pm disable-user --user 0 com.oppo.store           # ✅ disabled-user（OPPO 商城）
+adb shell pm disable-user --user 0 com.oplus.vip            # ✅ disabled-user（VIP 服务）
+adb shell pm disable-user --user 0 com.coloros.video        # ✅ disabled-user（ColorOS 视频）
+adb shell pm disable-user --user 0 com.coloros.karaoke      # ✅ disabled-user（卡拉OK）
+```
+
+#### 系统保护包 — 通过 suspend 挂起
+
+```bash
+adb shell pm suspend --user 0 com.heytap.market    # ✅ suspended（HeyTap 应用市场，disable-user 返回 default）
+adb shell pm suspend --user 0 com.heytap.pictorial  # ✅ suspended（HeyTap 壁纸杂志，disable-user 返回 default）
+```
+
+#### 卸载第三方应用
+
+```bash
+adb shell pm uninstall --user 0 com.zxscnew  # ✅ Success（世纪证券/前海金帆，非预装）
+```
+
 ### 全部状态汇总
 
 | 包名 | disable-user | uninstall | suspend | 最终状态 |
@@ -195,6 +229,21 @@ adb shell settings put global package_verifier_enable 0        # ✅
 | `com.heytap.htms` | ❌ default | - | ✅ | **已挂起** |
 | `com.sohu.inputmethod.sogouoem` | - | ✅ | - | **已卸载** |
 | `com.oplus.appdetail` | ✅ | - | - | **已禁用** |
+| `com.heytap.themestore` | ✅ | - | - | **已禁用** |
+| `com.heytap.yoli` | ✅ | - | - | **已禁用** |
+| `com.nearme.gamecenter` | ✅ | - | - | **已禁用** |
+| `com.oplus.games` | ✅ | - | - | **已禁用** |
+| `com.oplus.cupid` | ✅ | - | - | **已禁用** |
+| `com.oplus.member` | ✅ | - | - | **已禁用** |
+| `com.oplus.play` | ✅ | - | - | **已禁用** |
+| `com.oppo.community` | ✅ | - | - | **已禁用** |
+| `com.oppo.store` | ✅ | - | - | **已禁用** |
+| `com.oplus.vip` | ✅ | - | - | **已禁用** |
+| `com.coloros.video` | ✅ | - | - | **已禁用** |
+| `com.coloros.karaoke` | ✅ | - | - | **已禁用** |
+| `com.heytap.market` | ❌ default | - | ✅ | **已挂起** |
+| `com.heytap.pictorial` | ❌ default | - | ✅ | **已挂起** |
+| `com.zxscnew` | - | ✅ | - | **已卸载** |
 | `com.oplus.safecenter` | ❌ default | ❌ 拦截 | ❌ 拒绝 | ⚠️ **无法处理** |
 
 ---
@@ -219,8 +268,8 @@ java.lang.SecurityException: adb clearing user data is forbidden.
 
 | 等级 | 可用操作 | 示例包 |
 |------|---------|--------|
-| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud`, `com.coloros.activation`, `com.oplus.onetrace`, `com.oplus.logkit`, `com.oplus.appdetail` |
-| **重要** | disable ❌, suspend ✅ | `com.heytap.browser`, `com.oplus.aiunit`, `com.opos.ads`, `com.coloros.bootreg`, `com.heytap.htms` |
+| **普通** | disable-user ✅ | `com.oplus.deepthinker`, `com.oplus.athena`, `com.heytap.cloud`, `com.coloros.activation`, `com.oplus.onetrace`, `com.oplus.logkit`, `com.oplus.appdetail`, `com.heytap.themestore`, `com.nearme.gamecenter`, `com.oplus.games`, `com.oplus.cupid`, `com.oplus.play`, `com.oppo.community`, `com.oppo.store` |
+| **重要** | disable ❌, suspend ✅ | `com.heytap.browser`, `com.oplus.aiunit`, `com.opos.ads`, `com.coloros.bootreg`, `com.heytap.htms`, `com.heytap.market`, `com.heytap.pictorial` |
 | **核心** | disable ❌, suspend ❌, uninstall ❌ | `com.oplus.safecenter`（仅 root 可处理） |
 
 ### 绕过策略
@@ -256,12 +305,28 @@ adb shell pm enable --user 0 com.oplus.dmp
 adb shell pm enable --user 0 com.oplus.postmanservice
 adb shell pm enable --user 0 com.heytap.mcs
 
+# 恢复第五批禁用的包
+adb shell pm enable --user 0 com.heytap.themestore
+adb shell pm enable --user 0 com.heytap.yoli
+adb shell pm enable --user 0 com.nearme.gamecenter
+adb shell pm enable --user 0 com.oplus.games
+adb shell pm enable --user 0 com.oplus.cupid
+adb shell pm enable --user 0 com.oplus.member
+adb shell pm enable --user 0 com.oplus.play
+adb shell pm enable --user 0 com.oppo.community
+adb shell pm enable --user 0 com.oppo.store
+adb shell pm enable --user 0 com.oplus.vip
+adb shell pm enable --user 0 com.coloros.video
+adb shell pm enable --user 0 com.coloros.karaoke
+
 # 解除挂起的包
 adb shell pm unsuspend --user 0 com.heytap.browser
 adb shell pm unsuspend --user 0 com.oplus.aiunit
 adb shell pm unsuspend --user 0 com.opos.ads
 adb shell pm unsuspend --user 0 com.coloros.bootreg
 adb shell pm unsuspend --user 0 com.heytap.htms
+adb shell pm unsuspend --user 0 com.heytap.market
+adb shell pm unsuspend --user 0 com.heytap.pictorial
 
 # 恢复已卸载的包（需恢复出厂或通过系统更新）
 # com.sohu.inputmethod.sogouoem — 已从 User 0 卸载，无法通过 ADB 恢复
@@ -330,7 +395,7 @@ adb shell pm unsuspend --user 0 com.heytap.htms
 - [x] ~~禁用云服务~~ `com.heytap.cloud` 已禁用
 - [x] ~~禁用追踪/推送/日志组件~~ `activation`, `bootreg`, `onetrace`, `logkit`, `crashbox`, `dmp`, `postmanservice`, `mcs`, `htms` 已处理
 - [x] ~~安装替代应用（Firefox, Gboard）后禁用系统浏览器和输入法~~ Gboard 已完成，Firefox 待安装
-- [ ] 禁用中高危应用（应用商店、主题商店、游戏中心、内容分发等）
+- [x] ~~禁用中高危应用（应用商店、主题商店、游戏中心、内容分发等）~~ 第五批已全部处理
 - [ ] 禁用中危应用（语音管理、搜索、位置代理等）
 - [ ] 安装 Firefox 替代夸克浏览器
 - [ ] 在系统分身（User 10）中执行更全面的debloat
@@ -338,4 +403,4 @@ adb shell pm unsuspend --user 0 com.heytap.htms
 
 ---
 
-**最后更新**: 2026-02-17 (第四批 debloat — 安装验证 UI 禁用 + APK 完整性校验 + safecenter 调研)
+**最后更新**: 2026-02-17 (第五批 debloat — 内容分发/商店/广告推荐类 14 包处理 + 卸载 com.zxscnew)
