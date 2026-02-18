@@ -30,6 +30,10 @@ GMS 不是 AOSP 的一部分，而是 Google 通过 [MADA 协议](https://en.wik
 | **小米 (MIUI)** | 预装但默认关闭 | 需手动开启，部分机型需通过 Google 安装器 |
 | **vivo (OriginOS)** | 预装但默认关闭 | 与 OPPO 类似 |
 
+> OPPO 设备开启 GMS 的路径：设置 → 系统更新 → Google Settings
+>
+> ![Google Settings - 开启 GMS](./image/google_settings.png)
+
 ### 为什么国行默认关闭
 
 1. GMS 需要连接 Google 服务器（被 GFW 封锁），国内无法直连
