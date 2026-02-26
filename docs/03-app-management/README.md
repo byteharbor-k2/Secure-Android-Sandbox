@@ -62,7 +62,7 @@ adb shell pm disable-user --user 0 com.coloros.safesdkproxy
 adb shell pm disable-user --user 0 com.oplus.securitycore
 ```
 
-> **实测说明**（ColorOS 15）：`com.oplus.athena` 可成功 `disable-user`；`com.oplus.safecenter` 具备最高级保护，三种非 root 方法均被拦截（详见 [debloat 日志](./debloat-main-system.md)）；`com.coloros.safesdkproxy` 在本设备不存在。
+> **实测说明**（ColorOS 15）：`com.oplus.athena` 可成功 `disable-user`；`com.oplus.safecenter` 具备最高级保护，三种非 root 方法均被拦截（详见 [debloat 日志](./Chapter_1/1_debloat-main-system.md)）；`com.coloros.safesdkproxy` 在本设备不存在。
 
 ### 验证方法
 
@@ -88,7 +88,7 @@ adb shell pm enable com.oplus.safecenter
 
 ### 替换输入法
 
-使用 Gboard 替代搜狗输入法（已完成，详见 [debloat 日志 — 输入法替换记录](./debloat-main-system.md#输入法替换记录-2026-02-13)）。
+使用 Gboard 替代搜狗输入法（已完成，详见 [debloat 日志 — 输入法替换记录](./Chapter_1/1_debloat-main-system.md#输入法替换记录-2026-02-13)）。
 
 ### 替换应用商店
 
@@ -96,13 +96,13 @@ adb shell pm enable com.oplus.safecenter
 
 ### 删除/禁用高危系统应用
 
-已完成多批次 debloat（AI 功能、遥测、广告、推送、日志等 20+ 组件），详细操作日志和状态汇总见 [debloat-main-system.md](./debloat-main-system.md)。
+已完成多批次 debloat（AI 功能、遥测、广告、推送、日志等 20+ 组件），详细操作日志和状态汇总见 [debloat-main-system.md](./Chapter_1/1_debloat-main-system.md)。
 
 ---
 
 ## 4. 系统分身策略 — 安全主战场
 
-系统分身（User 10）是所有隐私和开发活动的核心空间。以下是推荐部署的应用分类。
+系统分身（User 10）是重要隔离空间，但在 VPN/ADB/开发者选项方面存在限制（详见 [`../01-system-analysis/system-clone-limitations.md`](../01-system-analysis/system-clone-limitations.md)）。以下为“可用时”的推荐部署分类。
 
 ### 4.1 基础替换
 
@@ -370,10 +370,8 @@ adb pull /data/app/~~hash~~/com.example.app-hash/base.apk
 
 ## 相关文档
 
-- [主系统 Debloat 操作日志](./debloat-main-system.md) — 详细的组件禁用记录与 ColorOS 保护机制分析
+- [主系统 Debloat 操作日志](./Chapter_1/1_debloat-main-system.md) — 详细的组件禁用记录与 ColorOS 保护机制分析
 - [系统分析与 ADB 操作](../01-system-analysis/README.md)
 - [网络安全配置](../02-network-security/)
 
 ---
-
-**最后更新**: 2026-02-14

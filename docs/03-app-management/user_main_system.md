@@ -10,7 +10,7 @@
 | **OPPO 账号** | 已登录 | NFC 刷卡（银行卡/公交卡）依赖 |
 | **OPPO Push (HeyTap MCS)** | 已禁用 | 国内主流 App 有自建长连接，影响有限 |
 
-> GMS 详细技术分析见 [Google Mobile Services 技术分析](./google-mobile-services.md)
+> GMS 详细技术分析见 [Google Mobile Services 技术分析](./Chapter_2/google-mobile-services.md)
 
 ---
 
@@ -115,8 +115,6 @@
 | `com.coloros.filemanager` | OPPO文件管理 | **已禁用** (替换为 Material Files) |
 | `com.coloros.note` | OPPO便签 | **已禁用** (替换为 Notion) |
 
-> 已处理的包详见 [主系统Debloat记录](./debloat-main-system.md)
+> 已处理的包详见 [主系统Debloat记录](./Chapter_1/1_debloat-main-system.md)
 
 ---
-
-**最后更新**: 2026-02-18
