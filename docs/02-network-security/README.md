@@ -77,14 +77,6 @@ WebRTC 协议会绕过代理/VPN 直接暴露本地 IP 和公网 IP 地址。
 
 详细配置步骤与验证方法 → [webrtc-leak-prevention.md](./webrtc-leak-prevention.md)
 
-## 6. V2rayN TUN 模式 DNS 故障排查
-
-Linux 上使用 V2rayN TUN 全局模式时，sing-box 会劫持所有 DNS 请求。在 TUN 启动瞬间可能产生 DNS 查询失败，被 systemd-resolved 负缓存后导致持续 SERVFAIL。另外 V2rayN 硬编码的 TUN 地址 `172.18.0.1/30` 与 Docker 默认网段存在冲突。
-
-**快速修复**：`sudo resolvectl flush-caches`
-
-详细排查流程、架构分析与 TUN 配置参考 → [tun-dns-troubleshooting.md](./tun-dns-troubleshooting.md)
-
 ## 6. 隐私防护清单
 
 ### 网络层
@@ -160,4 +152,4 @@ adb shell dumpsys connectivity | grep -i vpn
 
 ---
 
-**最后更新**: 2026-02-26
+**最后更新**: 2026-03-13
