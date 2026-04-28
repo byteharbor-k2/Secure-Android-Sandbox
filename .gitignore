@@ -80,3 +80,7 @@ extracted/
 *.bak
 *.backup
 *.old
+
+
+.claude/*
+.mcp.json
